@@ -1,5 +1,8 @@
 package com.example.ithomeapplication
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * title：新闻标题
  * time：发布时间
@@ -8,6 +11,7 @@ package com.example.ithomeapplication
  * editor：主编
  * content：新闻内容
  */
+@Parcelize
 class News(
     val title: String,
     val time: String,
@@ -15,4 +19,4 @@ class News(
     val img: Int,
     val editor: String,
     val content: String
-)
+): Parcelable

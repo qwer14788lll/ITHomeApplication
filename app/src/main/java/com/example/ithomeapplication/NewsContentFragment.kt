@@ -17,13 +17,13 @@ class NewsContentFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_news_content, container, false)
     }
 
-    fun refresh(news: News){
+    fun refresh(news: News) {
         //显示布局内容
-        ContentLayout.visibility=View.VISIBLE
-        ContentTitle.text=news.title
-        ContentTime.text=news.time
-        ContentEditor.text=news.editor
-        ContentText.text=news.content
+        ContentLayout.visibility = View.VISIBLE
+        ContentTitle.text = news.title
+        ContentTime.text = news.time
+        ContentEditor.text = news.editor
+        ContentText.text = news.content
         ContentImg.setImageResource(news.img)
     }
 }
