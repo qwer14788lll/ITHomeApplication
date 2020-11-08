@@ -1,7 +1,6 @@
 package com.example.ithomeapplication
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         isTwoPane = NewsContentTwoPane != null
         initNewsList()
         NewsRecyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter=NewsAdapter(newsList)
-        NewsRecyclerView.adapter=adapter
+        val adapter = NewsAdapter(newsList)
+        NewsRecyclerView.adapter = adapter
     }
 
     private fun initNewsList() {
@@ -100,9 +99,9 @@ class MainActivity : AppCompatActivity() {
                 News(
                     "小红书回应 “用户笔记存在大尺度内容”：已封禁，对涉黄、色情信息 “零容忍”",
                     "2020-11-06 14:58:45",
-                    "IT之家(孤城)",
+                    "109",
                     R.drawable.img_8,
-                    "",
+                    "IT之家(孤城)",
                     "IT之家11月6日消息 今天上午，小红书在官方微博发布声明，就近日有媒体报道的“用户涉黄”问题做出回应。" +
                             "\n" +
                             "IT之家了解到，小红书表示平台已于第一时间对举报中涉及的用户和内容进行详细核查，查出其中有一例有低俗内容导流行为的账号，此前已于10月30日被平台封禁。其他相关用户的笔记内容、互动评论等信息均不存在违法、违规行为，也未发现涉黄。针对举报中提及用户在微信、QQ等第三方平台涉黄行为，小红书平台已提交相关管理部门做进一步调查。" +
@@ -158,7 +157,6 @@ class MainActivity : AppCompatActivity() {
             val viewHolder = ViewHolder(view)
             viewHolder.itemView.setOnClickListener {
                 //获取点击的项
-                Log.i("newsList",viewHolder.adapterPosition.toString())
                 val news = newsList[viewHolder.adapterPosition]
                 if (isTwoPane) {
                     val fragment = NewsContentTwoPane as NewsContentFragment
@@ -167,14 +165,15 @@ class MainActivity : AppCompatActivity() {
                     NewsContentActivity.actionStart(parent.context, news)
                 }
             }
-            return ViewHolder(view)
+            return viewHolder
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val news = newsList[position]
             holder.title.text = news.title
             holder.time.text = news.time
-            holder.comment.text = news.comment
+            val numberOfComments = news.comment + "评"
+            holder.comment.text = numberOfComments
             holder.img.setImageResource(news.img)
         }
 
