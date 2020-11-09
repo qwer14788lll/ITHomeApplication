@@ -171,7 +171,8 @@ class MainActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val news = newsList[position]
             holder.title.text = news.title
-            holder.time.text = news.time
+            val newsTime = news.time
+            holder.time.text = newsTime.substring(IntRange(newsTime.length-8,newsTime.length-4))
             val numberOfComments = news.comment + "评"
             holder.comment.text = numberOfComments
             holder.img.setImageResource(news.img)
